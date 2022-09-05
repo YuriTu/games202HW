@@ -1,0 +1,5 @@
+# CMake generation dependency list for this directory.
+D:/Program Files/CMake/share/cmake-3.21/Modules/CPack.cmake
+D:/Program Files/CMake/share/cmake-3.21/Modules/CPackComponent.cmake
+D:/Program Files/CMake/share/cmake-3.21/Templates/CPackConfig.cmake.in
+D:/workspace/games202HW/hw2/prt/ext/openexr/IlmBase/CMakeLists.txt

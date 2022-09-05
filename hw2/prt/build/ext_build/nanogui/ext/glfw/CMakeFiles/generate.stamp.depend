@@ -1,0 +1,9 @@
+# CMake generation dependency list for this directory.
+D:/Program Files/CMake/share/cmake-3.21/Modules/BasicConfigVersion-SameMajorVersion.cmake.in
+D:/Program Files/CMake/share/cmake-3.21/Modules/CMakePackageConfigHelpers.cmake
+D:/Program Files/CMake/share/cmake-3.21/Modules/GNUInstallDirs.cmake
+D:/Program Files/CMake/share/cmake-3.21/Modules/WriteBasicConfigVersionFile.cmake
+D:/workspace/games202HW/hw2/prt/ext/nanogui/ext/glfw/CMakeLists.txt
+D:/workspace/games202HW/hw2/prt/ext/nanogui/ext/glfw/src/glfw3.pc.in
+D:/workspace/games202HW/hw2/prt/ext/nanogui/ext/glfw/src/glfw3Config.cmake.in
+D:/workspace/games202HW/hw2/prt/ext/nanogui/ext/glfw/src/glfw_config.h.in

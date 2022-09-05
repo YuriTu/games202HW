@@ -1,0 +1,9 @@
+# CMake generation dependency list for this directory.
+D:/Program Files/CMake/share/cmake-3.21/Modules/CheckCSourceCompiles.cmake
+D:/Program Files/CMake/share/cmake-3.21/Modules/CheckFunctionExists.cmake
+D:/Program Files/CMake/share/cmake-3.21/Modules/CheckIncludeFile.cmake
+D:/Program Files/CMake/share/cmake-3.21/Modules/CheckIncludeFileCXX.cmake
+D:/Program Files/CMake/share/cmake-3.21/Modules/CheckTypeSize.cmake
+D:/workspace/games202HW/hw2/prt/ext/openexr/zlib/CMakeLists.txt
+D:/workspace/games202HW/hw2/prt/ext/openexr/zlib/zconf.h.cmakein
+D:/workspace/games202HW/hw2/prt/ext/openexr/zlib/zlib.pc.cmakein

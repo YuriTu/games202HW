@@ -1,0 +1,7 @@
+# CMake generation dependency list for this directory.
+D:/Program Files/CMake/share/cmake-3.21/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake
+D:/Program Files/CMake/share/cmake-3.21/Modules/CheckCXXCompilerFlag.cmake
+D:/Program Files/CMake/share/cmake-3.21/Modules/CheckCXXSourceCompiles.cmake
+D:/Program Files/CMake/share/cmake-3.21/Modules/Internal/CheckCompilerFlag.cmake
+D:/Program Files/CMake/share/cmake-3.21/Modules/Internal/CheckSourceCompiles.cmake
+D:/workspace/games202HW/hw2/prt/ext/CMakeLists.txt

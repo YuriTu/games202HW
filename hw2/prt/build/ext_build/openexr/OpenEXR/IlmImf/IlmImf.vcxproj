@@ -1,0 +1,535 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A47BA9EB-5E8D-341E-8158-DC1B7DD16A4F}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>IlmImf</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">IlmImf.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">IlmImf</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">IlmImf.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">IlmImf</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">IlmImf.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">IlmImf</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">IlmImf.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">IlmImf</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\zlib;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Iex;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Imath;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\IlmThread;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Half;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\IlmBase\config;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\config;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfUtil;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmaketiled;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrenvmap;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmakepreview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmultiview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfFuzzTest;D:\workspace\games202HW\hw2\prt\ext\openexr\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4275;4267;4244;4477;4996;4800;4334;4251;4305;4302;4311;4018</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;__TBB_NO_IMPLICIT_LINKAGE;HAVE_CONFIG_H;ILM_IMF_TEST_IMAGEDIR="D:/workspace/games202HW/hw2/prt/IlmImfTest/";CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;__TBB_NO_IMPLICIT_LINKAGE;HAVE_CONFIG_H;ILM_IMF_TEST_IMAGEDIR=\"D:/workspace/games202HW/hw2/prt/IlmImfTest/\";CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\zlib;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Iex;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Imath;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\IlmThread;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Half;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\IlmBase\config;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\config;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfUtil;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmaketiled;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrenvmap;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmakepreview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmultiview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfFuzzTest;D:\workspace\games202HW\hw2\prt\ext\openexr\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <MASM>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;__TBB_NO_IMPLICIT_LINKAGE;HAVE_CONFIG_H;ILM_IMF_TEST_IMAGEDIR="D:/workspace/games202HW/hw2/prt/IlmImfTest/";CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <IncludePaths>D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\zlib;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Iex;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Imath;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\IlmThread;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Half;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\IlmBase\config;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\config;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfUtil;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmaketiled;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrenvmap;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmakepreview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmultiview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfFuzzTest;D:\workspace\games202HW\hw2\prt\ext\openexr\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\zlib;%(IncludePaths)</IncludePaths>
+    </MASM>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\zlib;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Iex;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Imath;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\IlmThread;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Half;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\IlmBase\config;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\config;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfUtil;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmaketiled;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrenvmap;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmakepreview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmultiview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfFuzzTest;D:\workspace\games202HW\hw2\prt\ext\openexr\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\zlib;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Iex;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Imath;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\IlmThread;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Half;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\IlmBase\config;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\config;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfUtil;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmaketiled;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrenvmap;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmakepreview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmultiview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfFuzzTest;D:\workspace\games202HW\hw2\prt\ext\openexr\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DisableSpecificWarnings>4275;4267;4244;4477;4996;4800;4334;4251;4305;4302;4311;4018</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;__TBB_NO_IMPLICIT_LINKAGE;NDEBUG;HAVE_CONFIG_H;ILM_IMF_TEST_IMAGEDIR="D:/workspace/games202HW/hw2/prt/IlmImfTest/";CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;__TBB_NO_IMPLICIT_LINKAGE;NDEBUG;HAVE_CONFIG_H;ILM_IMF_TEST_IMAGEDIR=\"D:/workspace/games202HW/hw2/prt/IlmImfTest/\";CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\zlib;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Iex;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Imath;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\IlmThread;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Half;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\IlmBase\config;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\config;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfUtil;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmaketiled;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrenvmap;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmakepreview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmultiview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfFuzzTest;D:\workspace\games202HW\hw2\prt\ext\openexr\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <MASM>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;__TBB_NO_IMPLICIT_LINKAGE;NDEBUG;HAVE_CONFIG_H;ILM_IMF_TEST_IMAGEDIR="D:/workspace/games202HW/hw2/prt/IlmImfTest/";CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <IncludePaths>D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\zlib;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Iex;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Imath;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\IlmThread;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Half;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\IlmBase\config;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\config;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfUtil;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmaketiled;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrenvmap;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmakepreview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmultiview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfFuzzTest;D:\workspace\games202HW\hw2\prt\ext\openexr\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\zlib;%(IncludePaths)</IncludePaths>
+    </MASM>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\zlib;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Iex;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Imath;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\IlmThread;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Half;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\IlmBase\config;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\config;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfUtil;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmaketiled;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrenvmap;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmakepreview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmultiview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfFuzzTest;D:\workspace\games202HW\hw2\prt\ext\openexr\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\zlib;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Iex;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Imath;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\IlmThread;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Half;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\IlmBase\config;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\config;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfUtil;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmaketiled;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrenvmap;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmakepreview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmultiview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfFuzzTest;D:\workspace\games202HW\hw2\prt\ext\openexr\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DisableSpecificWarnings>4275;4267;4244;4477;4996;4800;4334;4251;4305;4302;4311;4018</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;__TBB_NO_IMPLICIT_LINKAGE;NDEBUG;HAVE_CONFIG_H;ILM_IMF_TEST_IMAGEDIR="D:/workspace/games202HW/hw2/prt/IlmImfTest/";CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;__TBB_NO_IMPLICIT_LINKAGE;NDEBUG;HAVE_CONFIG_H;ILM_IMF_TEST_IMAGEDIR=\"D:/workspace/games202HW/hw2/prt/IlmImfTest/\";CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\zlib;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Iex;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Imath;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\IlmThread;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Half;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\IlmBase\config;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\config;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfUtil;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmaketiled;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrenvmap;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmakepreview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmultiview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfFuzzTest;D:\workspace\games202HW\hw2\prt\ext\openexr\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <MASM>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;__TBB_NO_IMPLICIT_LINKAGE;NDEBUG;HAVE_CONFIG_H;ILM_IMF_TEST_IMAGEDIR="D:/workspace/games202HW/hw2/prt/IlmImfTest/";CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <IncludePaths>D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\zlib;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Iex;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Imath;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\IlmThread;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Half;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\IlmBase\config;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\config;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfUtil;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmaketiled;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrenvmap;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmakepreview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmultiview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfFuzzTest;D:\workspace\games202HW\hw2\prt\ext\openexr\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\zlib;%(IncludePaths)</IncludePaths>
+    </MASM>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\zlib;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Iex;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Imath;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\IlmThread;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Half;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\IlmBase\config;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\config;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfUtil;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmaketiled;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrenvmap;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmakepreview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmultiview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfFuzzTest;D:\workspace\games202HW\hw2\prt\ext\openexr\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\zlib;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Iex;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Imath;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\IlmThread;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Half;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\IlmBase\config;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\config;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfUtil;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmaketiled;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrenvmap;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmakepreview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmultiview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfFuzzTest;D:\workspace\games202HW\hw2\prt\ext\openexr\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4275;4267;4244;4477;4996;4800;4334;4251;4305;4302;4311;4018</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;__TBB_NO_IMPLICIT_LINKAGE;NDEBUG;HAVE_CONFIG_H;ILM_IMF_TEST_IMAGEDIR="D:/workspace/games202HW/hw2/prt/IlmImfTest/";CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;__TBB_NO_IMPLICIT_LINKAGE;NDEBUG;HAVE_CONFIG_H;ILM_IMF_TEST_IMAGEDIR=\"D:/workspace/games202HW/hw2/prt/IlmImfTest/\";CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\zlib;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Iex;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Imath;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\IlmThread;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Half;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\IlmBase\config;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\config;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfUtil;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmaketiled;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrenvmap;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmakepreview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmultiview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfFuzzTest;D:\workspace\games202HW\hw2\prt\ext\openexr\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <MASM>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;__TBB_NO_IMPLICIT_LINKAGE;NDEBUG;HAVE_CONFIG_H;ILM_IMF_TEST_IMAGEDIR="D:/workspace/games202HW/hw2/prt/IlmImfTest/";CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <IncludePaths>D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\zlib;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Iex;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Imath;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\IlmThread;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Half;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\IlmBase\config;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\config;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfUtil;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmaketiled;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrenvmap;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmakepreview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmultiview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfFuzzTest;D:\workspace\games202HW\hw2\prt\ext\openexr\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\zlib;%(IncludePaths)</IncludePaths>
+    </MASM>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf;D:\workspace\games202HW\hw2\prt\ext\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\zlib;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Iex;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Imath;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\IlmThread;D:\workspace\games202HW\hw2\prt\ext\openexr\IlmBase\Half;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\IlmBase\config;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\config;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfUtil;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmaketiled;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrenvmap;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmakepreview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\exrmultiview;D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImfFuzzTest;D:\workspace\games202HW\hw2\prt\ext\openexr\zlib;D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\workspace\games202HW\hw2\prt\build\CMakeFiles\007ac301262b53bda8230f88e0fcb456\b44ExpLogTable.h.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating b44ExpLogTable.h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"D:\Program Files\CMake\bin\cmake.exe" -E env PATH=D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/Half/Debug;D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/IlmThread/Debug;D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/Iex/Debug D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/OpenEXR/IlmImf/Debug/b44ExpLogTable.exe &gt; D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/OpenEXR/IlmImf/b44ExpLogTable.h
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\Debug\b44ExpLogTable.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\b44ExpLogTable.h</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating b44ExpLogTable.h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"D:\Program Files\CMake\bin\cmake.exe" -E env PATH=D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/Half/Release;D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/IlmThread/Release;D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/Iex/Release D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/OpenEXR/IlmImf/Release/b44ExpLogTable.exe &gt; D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/OpenEXR/IlmImf/b44ExpLogTable.h
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\Release\b44ExpLogTable.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\b44ExpLogTable.h</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating b44ExpLogTable.h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"D:\Program Files\CMake\bin\cmake.exe" -E env PATH=D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/Half/MinSizeRel;D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/IlmThread/MinSizeRel;D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/Iex/MinSizeRel D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/OpenEXR/IlmImf/MinSizeRel/b44ExpLogTable.exe &gt; D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/OpenEXR/IlmImf/b44ExpLogTable.h
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\MinSizeRel\b44ExpLogTable.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\b44ExpLogTable.h</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating b44ExpLogTable.h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"D:\Program Files\CMake\bin\cmake.exe" -E env PATH=D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/Half/RelWithDebInfo;D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/IlmThread/RelWithDebInfo;D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/Iex/RelWithDebInfo D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/OpenEXR/IlmImf/RelWithDebInfo/b44ExpLogTable.exe &gt; D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/OpenEXR/IlmImf/b44ExpLogTable.h
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\RelWithDebInfo\b44ExpLogTable.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\b44ExpLogTable.h</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\workspace\games202HW\hw2\prt\build\CMakeFiles\007ac301262b53bda8230f88e0fcb456\dwaLookups.h.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating dwaLookups.h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"D:\Program Files\CMake\bin\cmake.exe" -E env PATH=D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/Half/Debug;D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/IlmThread/Debug;D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/Iex/Debug D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/OpenEXR/IlmImf/Debug/dwaLookups.exe &gt; D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/OpenEXR/IlmImf/dwaLookups.h
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\Debug\dwaLookups.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\dwaLookups.h</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating dwaLookups.h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"D:\Program Files\CMake\bin\cmake.exe" -E env PATH=D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/Half/Release;D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/IlmThread/Release;D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/Iex/Release D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/OpenEXR/IlmImf/Release/dwaLookups.exe &gt; D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/OpenEXR/IlmImf/dwaLookups.h
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\Release\dwaLookups.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\dwaLookups.h</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Generating dwaLookups.h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"D:\Program Files\CMake\bin\cmake.exe" -E env PATH=D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/Half/MinSizeRel;D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/IlmThread/MinSizeRel;D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/Iex/MinSizeRel D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/OpenEXR/IlmImf/MinSizeRel/dwaLookups.exe &gt; D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/OpenEXR/IlmImf/dwaLookups.h
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\MinSizeRel\dwaLookups.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\dwaLookups.h</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Generating dwaLookups.h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"D:\Program Files\CMake\bin\cmake.exe" -E env PATH=D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/Half/RelWithDebInfo;D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/IlmThread/RelWithDebInfo;D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/IlmBase/Iex/RelWithDebInfo D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/OpenEXR/IlmImf/RelWithDebInfo/dwaLookups.exe &gt; D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/OpenEXR/IlmImf/dwaLookups.h
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\RelWithDebInfo\dwaLookups.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\dwaLookups.h</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/workspace/games202HW/hw2/prt/ext/openexr/OpenEXR/IlmImf/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"D:\Program Files\CMake\bin\cmake.exe" -SD:/workspace/games202HW/hw2/prt -BD:/workspace/games202HW/hw2/prt/build --check-stamp-file D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/OpenEXR/IlmImf/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/workspace/games202HW/hw2/prt/ext/openexr/OpenEXR/IlmImf/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"D:\Program Files\CMake\bin\cmake.exe" -SD:/workspace/games202HW/hw2/prt -BD:/workspace/games202HW/hw2/prt/build --check-stamp-file D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/OpenEXR/IlmImf/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/workspace/games202HW/hw2/prt/ext/openexr/OpenEXR/IlmImf/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"D:\Program Files\CMake\bin\cmake.exe" -SD:/workspace/games202HW/hw2/prt -BD:/workspace/games202HW/hw2/prt/build --check-stamp-file D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/OpenEXR/IlmImf/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/workspace/games202HW/hw2/prt/ext/openexr/OpenEXR/IlmImf/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"D:\Program Files\CMake\bin\cmake.exe" -SD:/workspace/games202HW/hw2/prt -BD:/workspace/games202HW/hw2/prt/build --check-stamp-file D:/workspace/games202HW/hw2/prt/build/ext_build/openexr/OpenEXR/IlmImf/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfB44Compressor.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfDwaCompressor.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfAttribute.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfBoxAttribute.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfCRgbaFile.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfChannelList.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfChannelListAttribute.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfFloatAttribute.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfFrameBuffer.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfHeader.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfIO.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfInputFile.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfIntAttribute.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfLineOrderAttribute.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfMatrixAttribute.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfOpaqueAttribute.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfOutputFile.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfRgbaFile.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfStringAttribute.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfVecAttribute.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfHuf.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfThreading.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfWav.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfLut.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfCompressor.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfRleCompressor.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfZipCompressor.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfPizCompressor.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfMisc.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfCompressionAttribute.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfDoubleAttribute.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfConvert.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfPreviewImage.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfPreviewImageAttribute.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfVersion.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfChromaticities.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfChromaticitiesAttribute.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfKeyCode.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfKeyCodeAttribute.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfTimeCode.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfTimeCodeAttribute.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfRational.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfRationalAttribute.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfFramesPerSecond.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfStandardAttributes.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfStdIO.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfEnvmap.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfEnvmapAttribute.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfScanLineInputFile.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfTiledInputFile.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfTiledMisc.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfTiledOutputFile.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfTiledRgbaFile.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfTileDescriptionAttribute.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfTileOffsets.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfRgbaYca.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfPxr24Compressor.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfTestFile.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfStringVectorAttribute.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfMultiView.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfAcesFile.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfMultiPartOutputFile.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfGenericOutputFile.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfOutputPartData.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfMultiPartInputFile.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfGenericInputFile.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfPartType.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfInputPartData.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfOutputPart.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfTiledOutputPart.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfInputPart.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfTiledInputPart.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfDeepScanLineInputPart.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfDeepScanLineOutputPart.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfDeepScanLineInputFile.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfDeepScanLineOutputFile.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfDeepTiledInputPart.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfDeepTiledOutputPart.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfDeepTiledInputFile.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfDeepTiledOutputFile.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfDeepFrameBuffer.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfDeepCompositing.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfCompositeDeepScanLine.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfDeepImageStateAttribute.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfFastHuf.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfFloatVectorAttribute.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfRle.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfSystemSpecific.cpp" />
+    <ClCompile Include="D:\workspace\games202HW\hw2\prt\ext\openexr\OpenEXR\IlmImf\ImfZip.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\workspace\games202HW\hw2\prt\build\ZERO_CHECK.vcxproj">
+      <Project>{3778DC41-8B90-37AB-AD96-B0124B827F31}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\IlmBase\Half\Half.vcxproj">
+      <Project>{28A02090-0357-3DBB-8703-D4D8EC24B1A4}</Project>
+      <Name>Half</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\IlmBase\Iex\Iex.vcxproj">
+      <Project>{42E4358D-4CA2-3393-84BA-9BFF8C420071}</Project>
+      <Name>Iex</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\IlmBase\IlmThread\IlmThread.vcxproj">
+      <Project>{BF49A70A-ACF4-3397-A19E-26D8703D90E2}</Project>
+      <Name>IlmThread</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\IlmBase\Imath\Imath.vcxproj">
+      <Project>{3C13B794-17B1-318B-BF7E-C30AE86ED917}</Project>
+      <Name>Imath</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\b44ExpLogTable.vcxproj">
+      <Project>{36B1CC3F-6782-3D37-ACB2-68552EDF2473}</Project>
+      <Name>b44ExpLogTable</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\OpenEXR\IlmImf\dwaLookups.vcxproj">
+      <Project>{BAAB8056-73F7-330A-A415-EFF2B0351D28}</Project>
+      <Name>dwaLookups</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\workspace\games202HW\hw2\prt\build\ext_build\openexr\zlib\zlib.vcxproj">
+      <Project>{9EF581CC-9054-34A6-88A2-F57DD990FB23}</Project>
+      <Name>zlib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
+  </ImportGroup>
+</Project>
