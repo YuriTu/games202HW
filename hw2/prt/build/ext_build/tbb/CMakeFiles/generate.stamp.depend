@@ -1,15 +1,6 @@
 # CMake generation dependency list for this directory.
-D:/Program Files/CMake/share/cmake-3.21/Modules/CMakeASMCompiler.cmake.in
 D:/Program Files/CMake/share/cmake-3.21/Modules/CMakeASMInformation.cmake
 D:/Program Files/CMake/share/cmake-3.21/Modules/CMakeASM_MASMInformation.cmake
-D:/Program Files/CMake/share/cmake-3.21/Modules/CMakeCompilerIdDetection.cmake
-D:/Program Files/CMake/share/cmake-3.21/Modules/CMakeDetermineASMCompiler.cmake
-D:/Program Files/CMake/share/cmake-3.21/Modules/CMakeDetermineASM_MASMCompiler.cmake
-D:/Program Files/CMake/share/cmake-3.21/Modules/CMakeDetermineCompiler.cmake
-D:/Program Files/CMake/share/cmake-3.21/Modules/CMakeDetermineCompilerId.cmake
-D:/Program Files/CMake/share/cmake-3.21/Modules/CMakeFindBinUtils.cmake
-D:/Program Files/CMake/share/cmake-3.21/Modules/CMakeTestASMCompiler.cmake
-D:/Program Files/CMake/share/cmake-3.21/Modules/CMakeTestASM_MASMCompiler.cmake
 D:/Program Files/CMake/share/cmake-3.21/Modules/CheckCXXCompilerFlag.cmake
 D:/Program Files/CMake/share/cmake-3.21/Modules/CheckCXXSourceRuns.cmake
 D:/Program Files/CMake/share/cmake-3.21/Modules/Internal/CheckSourceRuns.cmake
