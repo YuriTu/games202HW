@@ -121,7 +121,7 @@ vec3 GetGBufferDiffuse(vec2 uv) {
  * uv is in screen space, [0, 1] x [0, 1].
  *
  */
-// 需要用到 GetGBufferDiffuse  获得漫反射率做了伽马校正 应该是颜色值
+// 需要用到 GetGBufferDiffuse  获得漫反射率做了伽马校正 应该是颜色值 基本的颜色值
 //  GetGBufferNormalWorld 法线
 // GetScreenCoordinate 世界坐标系的位置
 // bsdf 这里应该是统称，不考虑btdf的情况 本质还是brdf
@@ -130,9 +130,12 @@ vec3 EvalDiffuse(vec3 wi, vec3 wo, vec2 uv) {
   vec3 gBufferDiffuse = GetGBufferDiffuse(uv);
   vec3 normalWorld = GetGBufferNormalWorld(uv);
   vec2 normalScreen = GetScreenCoordinate(normalWorld);
-  // todo 有了wi wo normal diffuse 怎么获得 bsdf？  albedo / pi
-  // albedo 应该和directional light 有关
+  // todo 有了wi wo normal diffuse 怎么获得 bsdf？ 
+  // 如果是lambert diffuse 那么就是 albedo / pi  
+  // 其他的diffuse 则和wi wo 有关
 
+  // albedo 应该和directional light 有关
+  
   return gBufferDiffuse / M_PI;
   // return gBufferDiffuse * vec3(normalScreen,0.0) * (wi + wo);
   // return L;
