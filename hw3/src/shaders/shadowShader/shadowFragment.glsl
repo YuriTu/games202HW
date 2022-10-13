@@ -17,6 +17,7 @@ vec4 EncodeFloatRGBA(float v) {
 }
 
 void main(){
+  // 所以5个attachment中只有1个有具体的画面其他的都是只有vertex轮廓的透明的
   gl_FragData[0] = vec4(vec3(gl_FragCoord.z) * 100.0, 1.0);
   // gl_FragData[0] = EncodeFloatRGBA(gl_FragCoord.z * 100.0);
 }

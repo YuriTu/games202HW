@@ -35,7 +35,7 @@ float InitRand(vec2 uv) {
   p3 += dot(p3, p3.yzx + 33.33);
   return fract((p3.x + p3.y) * p3.z);
 }
-
+// 向半球采样 获得一个方向
 vec3 SampleHemisphereUniform(inout float s, out float pdf) {
   vec2 uv = Rand2(s);
   float z = uv.x;
@@ -121,9 +121,21 @@ vec3 GetGBufferDiffuse(vec2 uv) {
  * uv is in screen space, [0, 1] x [0, 1].
  *
  */
+// 需要用到 GetGBufferDiffuse  获得漫反射率做了伽马校正 应该是颜色值
+//  GetGBufferNormalWorld 法线
+// GetScreenCoordinate 世界坐标系的位置
+// bsdf 这里应该是统称，不考虑btdf的情况 本质还是brdf
 vec3 EvalDiffuse(vec3 wi, vec3 wo, vec2 uv) {
-  vec3 L = vec3(0.0);
-  return L;
+  vec3 L = vec3(1.0);
+  vec3 gBufferDiffuse = GetGBufferDiffuse(uv);
+  vec3 normalWorld = GetGBufferNormalWorld(uv);
+  vec2 normalScreen = GetScreenCoordinate(normalWorld);
+  // todo 有了wi wo normal diffuse 怎么获得 bsdf？  albedo / pi
+  // albedo 应该和directional light 有关
+
+  return gBufferDiffuse / M_PI;
+  // return gBufferDiffuse * vec3(normalScreen,0.0) * (wi + wo);
+  // return L;
 }
 
 /*
@@ -133,9 +145,11 @@ vec3 EvalDiffuse(vec3 wi, vec3 wo, vec2 uv) {
  */
 vec3 EvalDirectionalLight(vec2 uv) {
   vec3 Le = vec3(0.0);
-  return Le;
+  float flag = GetGBufferuShadow(uv);
+  float visibility = clamp(flag, 0.0, 1.0);
+  return vec3(visibility);
 }
-
+// 间接光照用的
 bool RayMarch(vec3 ori, vec3 dir, out vec3 hitPos) {
   return false;
 }
@@ -144,9 +158,17 @@ bool RayMarch(vec3 ori, vec3 dir, out vec3 hitPos) {
 
 void main() {
   float s = InitRand(gl_FragCoord.xy);
-
+  // todo 这里 L 应该是基本的texture   L *  brdf
   vec3 L = vec3(0.0);
   L = GetGBufferDiffuse(GetScreenCoordinate(vPosWorld.xyz));
+
+  vec2 uv = GetScreenCoordinate(vPosWorld.xyz);
+  vec3 wi = uCameraPos - vec3(uv, 1.0);
+  vec3 wo = uLightDir - vec3(uv, 1.0);
+  vec3 brdf = EvalDiffuse(wi,wo,uv);
+  vec3 view = EvalDirectionalLight(uv);
+  L = L * brdf * view;
+  // clamp的作用是限制 0.0 ~ 1.0 
   vec3 color = pow(clamp(L, vec3(0.0), vec3(1.0)), vec3(1.0 / 2.2));
   gl_FragColor = vec4(vec3(color.rgb), 1.0);
 }

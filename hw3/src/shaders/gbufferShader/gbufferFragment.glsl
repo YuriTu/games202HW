@@ -41,6 +41,7 @@ vec3 ApplyTangentNormalMap() {
 }
 
 void main(void) {
+  // 漫反射
   vec3 kd = texture2D(uKd, vTextureCoord).rgb;
   gl_FragData[0] = vec4(kd, 1.0);
   gl_FragData[1] = vec4(vec3(vDepth), 1.0);
