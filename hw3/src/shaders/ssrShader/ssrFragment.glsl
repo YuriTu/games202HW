@@ -16,6 +16,7 @@ varying highp vec4 vPosWorld;
 
 #define M_PI 3.1415926535897932384626433832795
 #define TWO_PI 6.283185307
+// 这个意思就是除pi
 #define INV_PI 0.31830988618
 #define INV_TWO_PI 0.15915494309
 
@@ -135,8 +136,8 @@ vec3 EvalDiffuse(vec3 wi, vec3 wo, vec2 uv) {
   // 其他的diffuse 则和wi wo 有关
 
   // albedo 应该和directional light 有关
-  
-  return gBufferDiffuse / M_PI;
+  // albedo / pi  * cos 漫反射入射夹角
+  return gBufferDiffuse * INV_PI *  max(0.0,dot(normalize(wi), normalize(normalWorld)));
   // return gBufferDiffuse * vec3(normalScreen,0.0) * (wi + wo);
   // return L;
 }
@@ -150,10 +151,12 @@ vec3 EvalDirectionalLight(vec2 uv) {
   vec3 Le = vec3(0.0);
   float flag = GetGBufferuShadow(uv);
   float visibility = clamp(flag, 0.0, 1.0);
-  return vec3(visibility);
+  // uLightRadiance 光照radiance 除了物体自己的diffuse 光照本身也可以有自己的颜色或者说能量 需要计算
+  return uLightRadiance * visibility;
 }
 // 间接光照用的
 bool RayMarch(vec3 ori, vec3 dir, out vec3 hitPos) {
+  // hitPos 主动赋值为交点
   return false;
 }
 
