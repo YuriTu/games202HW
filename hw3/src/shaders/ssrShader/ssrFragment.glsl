@@ -36,7 +36,7 @@ float InitRand(vec2 uv) {
   p3 += dot(p3, p3.yzx + 33.33);
   return fract((p3.x + p3.y) * p3.z);
 }
-// 向半球采样 获得一个方向
+// 向上半球采样 获得一个方向 局部坐标系 s随机数状态 pdf概率分布方程
 vec3 SampleHemisphereUniform(inout float s, out float pdf) {
   vec2 uv = Rand2(s);
   float z = uv.x;
@@ -47,6 +47,7 @@ vec3 SampleHemisphereUniform(inout float s, out float pdf) {
   return dir;
 }
 
+// 加权向cos采样 获得一个局部坐标系方向
 vec3 SampleHemisphereCos(inout float s, out float pdf) {
   vec2 uv = Rand2(s);
   float z = sqrt(1.0 - uv.x);
@@ -56,7 +57,8 @@ vec3 SampleHemisphereCos(inout float s, out float pdf) {
   pdf = z * INV_PI;
   return dir;
 }
-
+// 将局部坐标系转换到世界坐标系
+// n 局部坐标系的世界坐标法线  b1 b2 切线向量
 void LocalBasis(vec3 n, out vec3 b1, out vec3 b2) {
   float sign_ = sign(n.z);
   if (n.z == 0.0) {
@@ -155,17 +157,42 @@ vec3 EvalDirectionalLight(vec2 uv) {
   return uLightRadiance * visibility;
 }
 // 间接光照用的
+// 这里本质做的是 ray tracing 
+// 这里我们不用depth mipmap 使用均匀的step进行处理 每个step 0.001
 bool RayMarch(vec3 ori, vec3 dir, out vec3 hitPos) {
-  // hitPos 主动赋值为交点
-  return false;
+  // hitPos 主动赋值为交点 。
+  // 参数 ori 和 dir 为世界坐标系中的值，分别代表光线的起点和方向， 其中方向向量为单位向量。
+  vec3 tempPos = vec3(0.0);
+  float ori_depth = GetDepth(ori);
+  float temp_depth = 0.0;
+  const float STEP_SUM = 200.0;
+  float STEP = 0.0001;
+  bool flag = false;
+
+  for (float i = 0.0; i < STEP_SUM; i += 1.0) {
+    tempPos = ori + (i * STEP) * dir;
+    temp_depth = GetDepth(tempPos);
+
+    if (temp_depth > ori_depth) {
+      hitPos = tempPos;
+      flag = true;
+      break;
+    }
+    
+  }
+
+  return flag;
 }
 
 #define SAMPLE_NUM 1
 
 void main() {
   float s = InitRand(gl_FragCoord.xy);
-  // todo 这里 L 应该是基本的texture   L *  brdf
+  float seed1 = Rand1(s);
+  float seed2 = Rand1(seed1);
+  // 直接光照
   vec3 L = vec3(0.0);
+  vec3 indir_L = vec3(0.0);
   L = GetGBufferDiffuse(GetScreenCoordinate(vPosWorld.xyz));
 
   vec2 uv = GetScreenCoordinate(vPosWorld.xyz);
@@ -174,6 +201,28 @@ void main() {
   vec3 brdf = EvalDiffuse(wi,wo,uv);
   vec3 view = EvalDirectionalLight(uv);
   L = L * brdf * view;
+
+  // 间接光照
+  for (int i = 0; i < SAMPLE_NUM; i++) {
+    vec3 direction = SampleHemisphereUniform(seed1,seed2);
+
+    // ray tracing
+    // 先按照specular 处理
+    vec3 ori = vPosWorld.xyz;
+    vec3 dir = direction;
+    vec3 hitPos = vec3(0.0);
+    bool flag = RayMarch(ori, dir, hitPos);
+    if (flag) {
+      // todo 蒙特卡洛方法 与 本地坐标系转世界坐标系的方法
+      vec3 indir_wi = uCameraPos - hitPos;
+      vec3 indir_wo = uLightDir - hitPos;
+      vec3 indir_uv = GetScreenCoordinate(hitPos);
+      L = brdf/seed2 * EvalDiffuse(indir_wi, indir_wo, hitPos) * EvalDirectionalLight(hitPos)
+      indir_L = L + indir_L
+    }
+  }
+
+  L = L + indir_L;
   // clamp的作用是限制 0.0 ~ 1.0 
   vec3 color = pow(clamp(L, vec3(0.0), vec3(1.0)), vec3(1.0 / 2.2));
   gl_FragColor = vec4(vec3(color.rgb), 1.0);

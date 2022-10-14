@@ -23,5 +23,6 @@ void main(void) {
   vWorldToLight = uLightVP;
 
   gl_Position = uProjectionMatrix * uViewMatrix * uModelMatrix * vec4(aVertexPosition, 1.0);
+  // 是w不是z的原因： 因为 w 分量是线性深度值，而 z/w 是渲染管线用到的非线性深度值。
   vDepth = gl_Position.w;
 }
