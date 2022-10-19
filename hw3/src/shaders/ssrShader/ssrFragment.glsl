@@ -188,7 +188,7 @@ bool RayMarch(vec3 ori, vec3 dir, out vec3 hitPos) {
 
 }
 
-#define SAMPLE_NUM 10
+#define SAMPLE_NUM 20
 
 void main() {
   float s = InitRand(gl_FragCoord.xy);
@@ -255,7 +255,8 @@ void main() {
     
   }
   indir_L = (1.0 / float(SAMPLE_NUM)) * indir_L;
-  L =L  + indir_L;
+  L = L + indir_L;
+  // L = indir_L;
   // clamp的作用是限制 0.0 ~ 1.0 
   vec3 color = pow(clamp(L, vec3(0.0), vec3(1.0)), vec3(1.0 / 2.2));
   gl_FragColor = vec4(vec3(color.rgb), 1.0);
