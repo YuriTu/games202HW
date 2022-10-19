@@ -237,17 +237,16 @@ void main() {
       // 那么它的间接光来自：hitpos
       // 可得bsdf ( wi = xyz - hitpos  wo = cam )    (代码要求反一下 所以是hit - xyz = dir)
       // 2. 间接光照的着色点 uv1 （地上提供漫反射的地板 hit pos）
-      // 可得 bsdf wi = xyz - hitpos wo=  dir       (千万记住这里是间接光，hit的光是从uv0来的，不是light)
+      // 可得 bsdf wi = light s wo=  dir       (千万记住这里是间接光，hit的光是从light来的，去uv0而不是camera) （光路可逆，你反着理解也行）
       // dir 本质就是 hitpos - xyz
     
-      vec3 indir_uv1_wi = ori - hitPos;
       // 换算反射入射点的颜色uv
       vec2 indir_uv1 = GetScreenCoordinate(hitPos);
 
       // 间接光  1/N * Lo / pdf
       // Lo = Li * brdf * v 
       vec3 indir_rad =EvalDiffuse(dir,wo, uv)
-       * EvalDiffuse(indir_uv1_wi, dir, indir_uv1) * EvalDirectionalLight(indir_uv1);
+       * EvalDiffuse(wi, dir, indir_uv1) * EvalDirectionalLight(indir_uv1);
       // 累加多次的间接光照
       indir_L = indir_L + (indir_rad * inv_pdf);
       // indir_L = vec3(hitPos);
