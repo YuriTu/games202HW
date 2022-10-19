@@ -128,6 +128,7 @@ vec3 GetGBufferDiffuse(vec2 uv) {
 //  GetGBufferNormalWorld 法线
 // GetScreenCoordinate 世界坐标系的位置
 // bsdf 这里应该是统称，不考虑btdf的情况 本质还是brdf
+// WI WO 起点是着色点 世界坐标值
 vec3 EvalDiffuse(vec3 wi, vec3 wo, vec2 uv) {
   vec3 L = vec3(1.0);
   vec3 gBufferDiffuse = GetGBufferDiffuse(uv);
@@ -140,8 +141,6 @@ vec3 EvalDiffuse(vec3 wi, vec3 wo, vec2 uv) {
   // albedo 应该和directional light 有关
   // albedo / pi  * cos 漫反射入射夹角
   return gBufferDiffuse * INV_PI *  max(0.0,dot(normalize(wi), normalize(normalWorld)));
-  // return gBufferDiffuse * vec3(normalScreen,0.0) * (wi + wo);
-  // return L;
 }
 
 /*
@@ -162,67 +161,121 @@ vec3 EvalDirectionalLight(vec2 uv) {
 bool RayMarch(vec3 ori, vec3 dir, out vec3 hitPos) {
   // hitPos 主动赋值为交点 。
   // 参数 ori 和 dir 为世界坐标系中的值，分别代表光线的起点和方向， 其中方向向量为单位向量。
-  vec3 tempPos = vec3(0.0);
-  float ori_depth = GetDepth(ori);
-  float temp_depth = 0.0;
-  const float STEP_SUM = 200.0;
-  float STEP = 0.0001;
+
+  vec3 prevPoint = ori;
+  const int STEP_SUM = 400;
+  float step = 0.005;
   bool flag = false;
+  // 要不用break 有的浏览器跑不了
 
-  for (float i = 0.0; i < STEP_SUM; i += 1.0) {
-    tempPos = ori + (i * STEP) * dir;
-    temp_depth = GetDepth(tempPos);
+  for (int i = 0; i < STEP_SUM; i++) {
+    vec3 testPoint = prevPoint + step * dir;
+    // 这个点探测的depth
+    float testPointDepth = GetDepth(testPoint);
+    // 这个点实际的depth
+    float bufferDepth = GetGBufferDepth(GetScreenCoordinate(testPoint));
 
-    if (temp_depth > ori_depth) {
-      hitPos = tempPos;
+    if (testPointDepth < bufferDepth) {
+      prevPoint = testPoint;
+    } else if ( testPointDepth - bufferDepth > 1e-6) {
+      hitPos = testPoint;
       flag = true;
-      break;
+      return flag;
     }
-    
   }
-
+  
   return flag;
+
+
+  // vec3 tempPos = vec3(0.0);
+  // float ori_depth = GetDepth(ori);
+  // float temp_depth = 0.0;
+  // const float STEP_SUM = 400.0;
+  // float STEP = 0.005;
+  // bool flag = false;
+
+  // for (float i = 0.0; i < STEP_SUM; i += 1.0) {
+  //   tempPos = ori + (i * STEP) * dir;
+  //   temp_depth = GetDepth(tempPos);
+
+  //   if (temp_depth > ori_depth) {
+  //     hitPos = tempPos;
+  //     flag = true;
+  //     break;
+  //   }
+    
+  // }
+  // return flag;
 }
 
-#define SAMPLE_NUM 1
+#define SAMPLE_NUM 2
 
 void main() {
   float s = InitRand(gl_FragCoord.xy);
   float seed1 = Rand1(s);
   float seed2 = Rand1(seed1);
+  float N = 1.0;
   // 直接光照
   vec3 L = vec3(0.0);
   vec3 indir_L = vec3(0.0);
-  L = GetGBufferDiffuse(GetScreenCoordinate(vPosWorld.xyz));
-
+  // L = GetGBufferDiffuse(GetScreenCoordinate(vPosWorld.xyz));
+  // 直接光照着色点
   vec2 uv = GetScreenCoordinate(vPosWorld.xyz);
-  vec3 wi = uCameraPos - vec3(uv, 1.0);
-  vec3 wo = uLightDir - vec3(uv, 1.0);
+  //这里不是 uLightDir - vec3(vPosWorld.xyz) 的原因应该是这里是lightdir 是片光，不是点光
+  vec3 wi = uLightDir;
+  vec3 wo = uCameraPos - vec3(vPosWorld.xyz);
   vec3 brdf = EvalDiffuse(wi,wo,uv);
   vec3 view = EvalDirectionalLight(uv);
-  L = L * brdf * view;
+  L = brdf * view;
 
-  // 间接光照
+  // // 间接光照
   for (int i = 0; i < SAMPLE_NUM; i++) {
-    vec3 direction = SampleHemisphereUniform(seed1,seed2);
+    // 半球采样 所以是 1/2pi
+    float pdf = INV_TWO_PI;
+    float inv_pdf = TWO_PI;
+    // 采样方向 // 这是个局部坐标系
+    vec3 direction = SampleHemisphereUniform(seed1,pdf);
+
+    vec3 b1 = vec3(0.0);
+    vec3 b2 = vec3(0.0);
+    vec3 world_n = normalize( GetGBufferNormalWorld(uv) );
+    LocalBasis(world_n,b1,b2);
+
+    // 表换 direction 到世界坐标系
+    direction = normalize(mat3(b1,b2,world_n) * direction);
 
     // ray tracing
     // 先按照specular 处理
     vec3 ori = vPosWorld.xyz;
     vec3 dir = direction;
-    vec3 hitPos = vec3(0.0);
+    vec3 hitPos = vec3(0.0); // 反射光的着色点，后面会反射到shading point 上
+    // RayMarch 需要世界坐标系
     bool flag = RayMarch(ori, dir, hitPos);
     if (flag) {
-      // todo 蒙特卡洛方法 与 本地坐标系转世界坐标系的方法
-      vec3 indir_wi = uCameraPos - hitPos;
-      vec3 indir_wo = uLightDir - hitPos;
-      vec3 indir_uv = GetScreenCoordinate(hitPos);
-      L = brdf/seed2 * EvalDiffuse(indir_wi, indir_wo, hitPos) * EvalDirectionalLight(hitPos)
-      indir_L = L + indir_L
-    }
-  }
+      // warning！！ 这里已经讨论的全是间接光照了
+      // 1.直接光照的着色点 uv0  （即那个需要反射的正方体） 
+      // 那么它的间接光来自：hitpos
+      // 可得bsdf ( wi = xyz - hitpos  wo = cam )    (代码要求反一下 所以是hit - xyz = dir)
+      // 2. 间接光照的着色点 uv1 （地上提供漫反射的地板 hit pos）
+      // 可得 bsdf wi = xyz - hitpos wo=  dir       (千万记住这里是间接光，hit的光是从uv0来的，不是light)
+      // dir 本质就是 hitpos - xyz
+    
+      vec3 indir_uv1_wi = ori - hitPos;
+      // 换算反射入射点的颜色uv
+      vec2 indir_uv1 = GetScreenCoordinate(hitPos);
 
-  L = L + indir_L;
+      // 间接光  1/N * Lo / pdf
+      // Lo = Li * brdf * v 
+      vec3 indir_rad =EvalDiffuse(dir,wo, uv)
+       * EvalDiffuse(indir_uv1_wi, dir, indir_uv1) * EvalDirectionalLight(indir_uv1);
+      // 累加多次的间接光照
+      indir_L = indir_L + (indir_rad * inv_pdf);
+      // indir_L = vec3(hitPos);
+    }
+    
+  }
+  indir_L = (1.0 / float(SAMPLE_NUM)) * indir_L;
+  L =L  + indir_L;
   // clamp的作用是限制 0.0 ~ 1.0 
   vec3 color = pow(clamp(L, vec3(0.0), vec3(1.0)), vec3(1.0 / 2.2));
   gl_FragColor = vec4(vec3(color.rgb), 1.0);
