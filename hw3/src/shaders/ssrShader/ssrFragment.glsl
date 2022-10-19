@@ -186,29 +186,9 @@ bool RayMarch(vec3 ori, vec3 dir, out vec3 hitPos) {
   
   return flag;
 
-
-  // vec3 tempPos = vec3(0.0);
-  // float ori_depth = GetDepth(ori);
-  // float temp_depth = 0.0;
-  // const float STEP_SUM = 400.0;
-  // float STEP = 0.005;
-  // bool flag = false;
-
-  // for (float i = 0.0; i < STEP_SUM; i += 1.0) {
-  //   tempPos = ori + (i * STEP) * dir;
-  //   temp_depth = GetDepth(tempPos);
-
-  //   if (temp_depth > ori_depth) {
-  //     hitPos = tempPos;
-  //     flag = true;
-  //     break;
-  //   }
-    
-  // }
-  // return flag;
 }
 
-#define SAMPLE_NUM 2
+#define SAMPLE_NUM 10
 
 void main() {
   float s = InitRand(gl_FragCoord.xy);
