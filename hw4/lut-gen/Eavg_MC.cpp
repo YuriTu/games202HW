@@ -15,6 +15,7 @@
 
 int resolution = 128;
 int channel = 3;
+const float INV_TWO_PI = 0.15915494309;
 
 typedef struct samplePoints {
     std::vector<Vec3f> directions;
@@ -71,14 +72,20 @@ Vec3f IntegrateEmu(Vec3f V, float roughness, float NdotV, Vec3f Ei) {
     samplePoints sampleList = squareToCosineHemisphere(sample_count);
     for (int i = 0; i < sample_count; i++) {
         Vec3f L = sampleList.directions[i];
-        Vec3f H = normalize(V + L);
-
+        Vec3f H = normalize(V + L);// 半程向量
+        // 应该是规范化了一下z？
         float NoL = std::max(L.z, 0.0f);
         float NoH = std::max(H.z, 0.0f);
-        float VoH = std::max(dot(V, H), 0.0f);
-        float NoV = std::max(dot(N, V), 0.0f);
+
+        float VoH = std::max(dot(V, H), 0.0f);  // v.h
+        float NoV = std::max(dot(N, V), 0.0f); // n.v
 
         // TODO: To calculate Eavg here
+        Vec3 radiance = Vec3f(0.0);
+
+                
+
+        Eavg = Eavg + (radiance * INV_TWO_PI);
         
     }
 
