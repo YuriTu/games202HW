@@ -99,7 +99,7 @@ Vec3f IntegrateBRDF(Vec3f V, float roughness, float NdotV) {
       float denominator = std::max((4 * NoV * NoL),0.0001f);
 
       Vec3f brdf = (F * g * d) / denominator;
-      float cos_theta = NoV;
+      float cos_theta = NoL;
 
       Vec3f radiance_s = brdf * cos_theta;
       

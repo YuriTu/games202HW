@@ -81,9 +81,9 @@ Vec3f IntegrateEmu(Vec3f V, float roughness, float NdotV, Vec3f Ei) {
         float NoV = std::max(dot(N, V), 0.0f); // n.v
         float param = 2.0f;
         // TODO: To calculate Eavg here
-        Vec3f radiance = Ei * param * NdotV;
-
-        Eavg = Eavg + (radiance * INV_TWO_PI);
+        Vec3f radiance = (Ei * NoL) * param;
+        // 这里不是做蒙特卡洛积分 需要注意
+        Eavg = Eavg + radiance;
     }
 
     return Eavg / sample_count;
