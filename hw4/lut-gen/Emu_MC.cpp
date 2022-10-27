@@ -81,6 +81,7 @@ Vec3f IntegrateBRDF(Vec3f V, float roughness, float NdotV) {
     Vec3f N = Vec3f(0.0, 0.0, 1.0);
 
     Vec3f radiance = Vec3f(0.0);
+    Vec3f R0 = Vec3f(1.0f);
     
     samplePoints sampleList = squareToCosineHemisphere(sample_count);
     for (int i = 0; i < sample_count; i++) {
@@ -91,8 +92,8 @@ Vec3f IntegrateBRDF(Vec3f V, float roughness, float NdotV) {
       float NoV = NdotV;
       float NoL = std::max( dot(N,LightDir) , 0.0f);
       Vec3f H = normalize(LightDir + V);
-
-      Vec3f F = Vec3f(1.0);
+      // warning 你可以假设R0基础反射率是1 但是不能直接假设Frenel是1 (虽然算下来的确是1...)
+      Vec3f F = R0 + (Vec3f(1.0) - R0)* pow(1.0f - NoV,5.0f);
       float g = GeometrySmith(roughness,NoV,NoL);
       float d = DistributionGGX(N,H,roughness);
 
@@ -100,7 +101,7 @@ Vec3f IntegrateBRDF(Vec3f V, float roughness, float NdotV) {
 
       Vec3f brdf = (F * g * d) / denominator;
       float cos_theta = NoL;
-
+        // 很多人这里写的是 (D*G/(4.0f*NdotV))/pdf  感觉像是只考虑Eo 且没有costheta一样 
       Vec3f radiance_s = brdf * cos_theta;
       
 

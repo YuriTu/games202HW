@@ -80,10 +80,16 @@ Vec3f IntegrateEmu(Vec3f V, float roughness, float NdotV, Vec3f Ei) {
         float VoH = std::max(dot(V, H), 0.0f);  // v.h
         float NoV = std::max(dot(N, V), 0.0f); // n.v
         float param = 2.0f;
+        float inv_pdf = 1.0f;
         // TODO: To calculate Eavg here
-        Vec3f radiance = (Ei * NoL) * param;
-        // 这里不是做蒙特卡洛积分 需要注意
-        Eavg = Eavg + radiance;
+        // 很多人写的是 Eavg +=  Ei* NoL; 
+        // 我没看懂为啥
+
+        //我这里的理解是： Ei即公式中的f(\mu) nov 本质是cos 因为sin\mu 的积分可以与cos互换
+        Vec3f radiance = (Ei * NoV) * param;
+        // 蒙特卡洛采样 pdf 在sin\mu 所以是1
+        // 效果看着还行
+        Eavg = Eavg + (radiance * inv_pdf);
     }
 
     return Eavg / sample_count;
