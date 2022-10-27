@@ -89,14 +89,14 @@ Vec3f IntegrateBRDF(Vec3f V, float roughness, float NdotV) {
       float pdf = sampleList.PDFs[i];
 
       float NoV = NdotV;
-      float NoL = dot(N,LightDir);
+      float NoL = std::max( dot(N,LightDir) , 0.0f);
       Vec3f H = normalize(LightDir + V);
 
       Vec3f F = Vec3f(1.0);
       float g = GeometrySmith(roughness,NoV,NoL);
       float d = DistributionGGX(N,H,roughness);
 
-      float denominator = std::max((4 * NoV * NoL),0.0001);
+      float denominator = std::max((4 * NoV * NoL),0.0001f);
 
       Vec3f brdf = (F * g * d) / denominator;
       float cos_theta = NoV;
