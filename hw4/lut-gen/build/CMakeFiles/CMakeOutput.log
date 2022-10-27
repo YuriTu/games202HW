@@ -9,7 +9,7 @@ The output was:
 用于 .NET Framework 的 Microsoft (R) 生成引擎版本 16.11.2+f32259642
 版权所有(C) Microsoft Corporation。保留所有权利。
 
-生成启动时间为 2022/10/27 15:17:42。
+生成启动时间为 2022/10/27 15:26:53。
 节点 1 上的项目“D:\workspace\games202HW\hw4\lut-gen\build\CMakeFiles\3.21.4\CompilerIdC\CompilerIdC.vcxproj”(默认目标)。
 PrepareForBuild:
   正在创建目录“Debug\”。
@@ -35,7 +35,7 @@ FinalizeBuildStatus:
     0 个警告
     0 个错误
 
-已用时间 00:00:01.17
+已用时间 00:00:01.09
 
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -54,7 +54,7 @@ The output was:
 用于 .NET Framework 的 Microsoft (R) 生成引擎版本 16.11.2+f32259642
 版权所有(C) Microsoft Corporation。保留所有权利。
 
-生成启动时间为 2022/10/27 15:17:44。
+生成启动时间为 2022/10/27 15:26:54。
 节点 1 上的项目“D:\workspace\games202HW\hw4\lut-gen\build\CMakeFiles\3.21.4\CompilerIdCXX\CompilerIdCXX.vcxproj”(默认目标)。
 PrepareForBuild:
   正在创建目录“Debug\”。
@@ -80,7 +80,7 @@ FinalizeBuildStatus:
     0 个警告
     0 个错误
 
-已用时间 00:00:00.95
+已用时间 00:00:00.97
 
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -92,28 +92,28 @@ The CXX compiler identification is MSVC, found in "D:/workspace/games202HW/hw4/l
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: D:/workspace/games202HW/hw4/lut-gen/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):D:/Program Files/Microsoft/VisualStudio/MSBuild/Current/Bin/MSBuild.exe cmTC_5edb6.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && 用于 .NET Framework 的 Microsoft (R) 生成引擎版本 16.11.2+f32259642
+Run Build Command(s):D:/Program Files/Microsoft/VisualStudio/MSBuild/Current/Bin/MSBuild.exe cmTC_fcc93.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && 用于 .NET Framework 的 Microsoft (R) 生成引擎版本 16.11.2+f32259642
 版权所有(C) Microsoft Corporation。保留所有权利。
 
   用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.29.30145 版
   版权所有(C) Microsoft Corporation。保留所有权利。
   CMakeCCompilerABI.c
-  cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_5edb6.dir\Debug\\" /Fd"cmTC_5edb6.dir\Debug\vc142.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCCompilerABI.c"
-  cmTC_5edb6.vcxproj -> D:\workspace\games202HW\hw4\lut-gen\build\CMakeFiles\CMakeTmp\Debug\cmTC_5edb6.exe
+  cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_fcc93.dir\Debug\\" /Fd"cmTC_fcc93.dir\Debug\vc142.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCCompilerABI.c"
+  cmTC_fcc93.vcxproj -> D:\workspace\games202HW\hw4\lut-gen\build\CMakeFiles\CMakeTmp\Debug\cmTC_fcc93.exe
 
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: D:/workspace/games202HW/hw4/lut-gen/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):D:/Program Files/Microsoft/VisualStudio/MSBuild/Current/Bin/MSBuild.exe cmTC_e284c.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && 用于 .NET Framework 的 Microsoft (R) 生成引擎版本 16.11.2+f32259642
+Run Build Command(s):D:/Program Files/Microsoft/VisualStudio/MSBuild/Current/Bin/MSBuild.exe cmTC_92840.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=16.0 /v:m && 用于 .NET Framework 的 Microsoft (R) 生成引擎版本 16.11.2+f32259642
 版权所有(C) Microsoft Corporation。保留所有权利。
 
   用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.29.30145 版
   版权所有(C) Microsoft Corporation。保留所有权利。
   CMakeCXXCompilerABI.cpp
-  cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_e284c.dir\Debug\\" /Fd"cmTC_e284c.dir\Debug\vc142.pdb" /external:W1 /Gd /TP /errorReport:queue "D:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCXXCompilerABI.cpp"
-  cmTC_e284c.vcxproj -> D:\workspace\games202HW\hw4\lut-gen\build\CMakeFiles\CMakeTmp\Debug\cmTC_e284c.exe
+  cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_92840.dir\Debug\\" /Fd"cmTC_92840.dir\Debug\vc142.pdb" /external:W1 /Gd /TP /errorReport:queue "D:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCXXCompilerABI.cpp"
+  cmTC_92840.vcxproj -> D:\workspace\games202HW\hw4\lut-gen\build\CMakeFiles\CMakeTmp\Debug\cmTC_92840.exe
 
 
 
