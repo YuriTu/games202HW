@@ -21,11 +21,11 @@ const float PI = 3.14159265359;
 
 float DistributionGGX(vec3 N, vec3 H, float roughness)
 {
+   // 注意这里pdf材料公式有错误 根据hw4\lut-gen\Emu_MC.cpp 53行，分母的1并没有在括号里（在里面没必要写了
    // TODO: To calculate GGX NDF here
    float alpha = pow(roughness,2.0);
    float alpha_2 = pow(alpha,2.0);
-   float NdotH = clamp(dot(N,H), 0.0, 1.0);
-   float param1 = pow(dot(N,H),2.0) * ( (alpha_2 - 1.0) + 1.0);
+   float param1 = pow(dot(N,H),2.0) * (alpha_2 - 1.0)+ 1.0;
    float param2 = PI * pow(param1,2.0);
    return alpha_2 / param2;
 }
@@ -33,7 +33,7 @@ float DistributionGGX(vec3 N, vec3 H, float roughness)
 float GeometrySchlickGGX(float NdotV, float roughness)
 {
     // TODO: To calculate Smith G1 here
-    // 注意cos 的情况，否则可能会计算负角度的光搞得特别亮
+    // 注意cos 的情况，否则可能会计算负角度的光搞得特别亮  （这个例子里面clamp与否都没影响
     NdotV = clamp(NdotV, 0.0, 1.0);
     float k = pow((roughness + 1.0),2.0) / 8.0;
     float result = NdotV / ((NdotV * (1.0 - k)) + k);
