@@ -24,6 +24,7 @@ float DistributionGGX(vec3 N, vec3 H, float roughness)
    // TODO: To calculate GGX NDF here
    float alpha = pow(roughness,2.0);
    float alpha_2 = pow(alpha,2.0);
+   float NdotH = clamp(dot(N,H), 0.0, 1.0);
    float param1 = pow(dot(N,H),2.0) * ( (alpha_2 - 1.0) + 1.0);
    float param2 = PI * pow(param1,2.0);
    return alpha_2 / param2;
@@ -32,6 +33,8 @@ float DistributionGGX(vec3 N, vec3 H, float roughness)
 float GeometrySchlickGGX(float NdotV, float roughness)
 {
     // TODO: To calculate Smith G1 here
+    // 注意cos 的情况，否则可能会计算负角度的光搞得特别亮
+    NdotV = clamp(NdotV, 0.0, 1.0);
     float k = pow((roughness + 1.0),2.0) / 8.0;
     float result = NdotV / ((NdotV * (1.0 - k)) + k);
     
@@ -53,7 +56,8 @@ vec3 fresnelSchlick(vec3 F0, vec3 V, vec3 H)
 {
     // TODO: To calculate Schlick F here
     vec3 R0 = F0;
-    float cosTheta = max( dot(V,H) ,0.0);
+    float VdotH = clamp(dot(V,H), 0.0, 1.0);
+    float cosTheta = VdotH;
     vec3 reflactance = R0 + (1.0-R0) * pow( (1.0-cosTheta),5.0);
     
     return reflactance;
