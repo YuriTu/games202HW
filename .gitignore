@@ -1,3 +1,4 @@
 *.sh
 .vscode/
 build/
+hw5/src/examples

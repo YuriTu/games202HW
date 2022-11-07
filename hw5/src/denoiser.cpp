@@ -46,7 +46,32 @@ Buffer2D<Float3> Denoiser::Filter(const FrameInfo &frameInfo) {
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
             // TODO: Joint bilateral filter
-            filteredImage(x, y) = frameInfo.m_beauty(x, y);
+            // std::exp
+            float sum_of_weight = 0.0f;
+            Float3 sum_of_weight_value;
+            // 当前点i
+            Float3 i = frameInfo.m_beauty(x, y);
+            int j_min_x;
+            int j_max_x;
+            int j_min_y;
+            int j_max_y;
+
+
+            // 关系点j
+            for (int j_x = j_min_x; j_x < j_max_x; j_x++) {
+                for (int j_y = j_min_y; j_y < j_max_y; j_y++) {
+                    
+                    Float3 j = frameInfo.m_beauty(j_x,j_y);
+
+                    float kernel = 1.0f;
+
+                    sum_of_weight = std::exp(kernel);
+                    sum_of_weight_value += (j * sum_of_weight);
+                }
+            }
+
+            // 结果
+            filteredImage(x, y) = sum_of_weight_value / sum_of_weight;
         }
     }
     return filteredImage;
