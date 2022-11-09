@@ -51,22 +51,36 @@ Buffer2D<Float3> Denoiser::Filter(const FrameInfo &frameInfo) {
             Float3 sum_of_weight_value;
             // 当前点i
             Float3 i = frameInfo.m_beauty(x, y);
-            int j_min_x;
-            int j_max_x;
-            int j_min_y;
-            int j_max_y;
-
+            int j_min_x = std::max(0, x - kernelRadius);
+            int j_max_x = std::min(width, x + kernelRadius);
+            int j_min_y = std::max(0, y - height);
+            int j_max_y = std::min(height, y + kernelRadius);
+            Float3 i_normal = frameInfo.m_normal(x,y);
+            Float3 i_position = frameInfo.m_position(x,y);
+            
 
             // 关系点j
             for (int j_x = j_min_x; j_x < j_max_x; j_x++) {
                 for (int j_y = j_min_y; j_y < j_max_y; j_y++) {
                     
                     Float3 j = frameInfo.m_beauty(j_x,j_y);
+                    Float3 i_xy = Float3(x,y,0.0f);
+                    Float3 j_xy = Float3(j_x,j_y,0.0f);
+                    Float3 j_normal = frameInfo.m_normal(j_x,j_y);
+                    Float3 j_position = frameInfo.m_position(j_x,j_y);
 
                     float kernel = 1.0f;
 
-                    sum_of_weight = std::exp(kernel);
-                    sum_of_weight_value += (j * sum_of_weight);
+                    float distance = Sqr(Length(i_xy - j_xy)) / (2.0f * std::pow(m_sigmaCoord, 2.0f)) * -1.0f;
+                    float color = Sqr(Length(i - j)) /  (2.0f * std::pow(m_sigmaColor, 2.0f)) * -1.0f;
+                    float normal_ij = std::acos( Dot(Normalize(i), Normalize(j)) );
+                    float normal = std::pow(Sqr(normal_ij), 2.0f) / (2 * std::pow(m_sigmaNormal, 2.0f)) * -1.0f;
+                    float plane_ij = Dot(i_normal, Normalize(j_position - i_position) );
+                    float plane = std::pow(plane_ij, 2.0f) / (2.0f * std::pow(m_sigmaPlane, 2.0f)) * -1.0f;
+
+                    float weight = std::exp(distance + color + normal + plane);
+                    sum_of_weight += weight; 
+                    sum_of_weight_value += (j * weight);
                 }
             }
 
