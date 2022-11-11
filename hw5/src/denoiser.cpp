@@ -2,6 +2,8 @@
 
 Denoiser::Denoiser() : m_useTemportal(false) {}
 
+// 找上一帧的对应像素 frameInfo当前帧信息  Denoiser::m_accColor 上一帧结果 m_valid 是否合法
+// screen = PVM()
 void Denoiser::Reprojection(const FrameInfo &frameInfo) {
     int height = m_accColor.m_height;
     int width = m_accColor.m_width;
@@ -14,12 +16,57 @@ void Denoiser::Reprojection(const FrameInfo &frameInfo) {
         for (int x = 0; x < width; x++) {
             // TODO: Reproject
             m_valid(x, y) = false;
-            m_misc(x, y) = Float3(0.f);
+            m_misc(x, y) =  Float3(0.f);
+            // 0. 当前像素 屏幕坐标
+            // x y
+            // 1. 当前帧的世界坐标
+            Float3 position = frameInfo.m_position(x,y);
+            
+            // 2. 世界坐标到物体坐标
+            //对应的物体标号
+            float item_id = frameInfo.m_id(x,y);
+            // 物体到世界
+            Matrix4x4 item_matrix = frameInfo.m_matrix[item_id];
+            auto world2module = Inverse(item_matrix);
+            
+            // 上一帧
+            // 3.物体到世界
+            auto pre_module2world = m_preFrameInfo.m_matrix[item_id];
+            // 4. 世界到camera => 屏幕
+            auto pre_world2screen = preWorldToScreen;
+
+            Float3 pre_item_screen_position = pre_world2screen(
+                pre_module2world(
+                    world2module(
+                            position, Float3::Point
+                        ),Float3::Point
+                ),
+                Float3::Point
+            );
+            bool inScreen = 
+                pre_item_screen_position.x <0 || pre_item_screen_position.x > width ||
+                pre_item_screen_position.y <0 || pre_item_screen_position.y > height;
+            
+            // 目前像素对应的物体标号
+            float pre_item_id = m_preFrameInfo.m_id(pre_item_screen_position.x, pre_item_screen_position.y);
+
+            bool isSameObject = pre_item_id == item_id;
+
+            // 2. 判断是否合法
+            // 1. 对应的xy在不在屏幕
+            // 2.  m_id是否能对上
+
+            if (inScreen && isSameObject) {
+                m_valid(x,y) = true;
+                // 把上一帧的投影结果 保存下来，表示使用，在当前帧后面渲染会参考使用
+                m_misc(x, y) = m_accColor(pre_item_screen_position.x, pre_item_screen_position.y);
+            }
+            
         }
     }
     std::swap(m_misc, m_accColor);
 }
-
+// 当前帧 curFilteredColor的滤波后结果
 void Denoiser::TemporalAccumulation(const Buffer2D<Float3> &curFilteredColor) {
     int height = m_accColor.m_height;
     int width = m_accColor.m_width;
@@ -28,7 +75,9 @@ void Denoiser::TemporalAccumulation(const Buffer2D<Float3> &curFilteredColor) {
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
             // TODO: Temporal clamp
+            // acc是上一帧的投影后参考结果
             Float3 color = m_accColor(x, y);
+            // 指数均线
             // TODO: Exponential moving average
             float alpha = 1.0f;
             m_misc(x, y) = Lerp(color, curFilteredColor(x, y), alpha);
@@ -51,25 +100,23 @@ Buffer2D<Float3> Denoiser::Filter(const FrameInfo &frameInfo) {
             Float3 sum_of_weight_value;
             // 当前点i
             Float3 i = frameInfo.m_beauty(x, y);
+            Float3 i_xy = Float3(x,y,0.0f);
+            Float3 i_normal = frameInfo.m_normal(x,y);
+            Float3 i_position = frameInfo.m_position(x,y);
+            
             int j_min_x = std::max(0, x - kernelRadius);
             int j_max_x = std::min(width, x + kernelRadius);
             int j_min_y = std::max(0, y - height);
             int j_max_y = std::min(height, y + kernelRadius);
-            Float3 i_normal = frameInfo.m_normal(x,y);
-            Float3 i_position = frameInfo.m_position(x,y);
-            
 
             // 关系点j
             for (int j_x = j_min_x; j_x < j_max_x; j_x++) {
                 for (int j_y = j_min_y; j_y < j_max_y; j_y++) {
                     
                     Float3 j = frameInfo.m_beauty(j_x,j_y);
-                    Float3 i_xy = Float3(x,y,0.0f);
                     Float3 j_xy = Float3(j_x,j_y,0.0f);
                     Float3 j_normal = frameInfo.m_normal(j_x,j_y);
                     Float3 j_position = frameInfo.m_position(j_x,j_y);
-
-                    float kernel = 1.0f;
 
                     float distance = Sqr(Length(i_xy - j_xy)) / (2.0f * std::pow(m_sigmaCoord, 2.0f)) * -1.0f;
                     float color = Sqr(Length(i - j)) /  (2.0f * std::pow(m_sigmaColor, 2.0f)) * -1.0f;

@@ -1,5 +1,5 @@
 rd /s /q build
 mkdir build
-cd build
-cmake ..
-cd ..
+cmake -S . -B build
+@REM cp -r src/examples build/Release/examples
+cmake --build build --config Release

@@ -5,6 +5,10 @@
 #include "util/image.h"
 #include "util/mathutil.h"
 
+#include <windows.h>
+#include <iostream>
+
+
 std::vector<Matrix4x4> ReadMatrix(const std::string &filename) {
     std::ifstream is;
     is.open(filename, std::ios::binary);
@@ -45,17 +49,16 @@ void Denoise(const filesystem::path &inputDir, const filesystem::path &outputDir
         FrameInfo frameInfo = LoadFrameInfo(inputDir, i);
         Buffer2D<Float3> image = denoiser.ProcessFrame(frameInfo);
         std::string filename =
-            (outputDir / ("result_" + std::to_string(i) + ".exr")).str();
+            (outputDir / ("result_" + std::to_string(i) + ".png")).str();
         WriteFloat3Image(image, filename);
     }
 }
 
 int main() {
-    // Box
-    filesystem::path inputDir("examples/box/input");
-    filesystem::path outputDir("examples/box/output");
+    // Box E:/GAMES202/
+    filesystem::path inputDir("D:/workspace/games202HW/hw5/src/examples/box/input");
+    filesystem::path outputDir("D:/workspace/games202HW/hw5/src/examples/box/output");
     int frameNum = 20;
-
     /*
     // Pink room
     filesystem::path inputDir("examples/pink-room/input");

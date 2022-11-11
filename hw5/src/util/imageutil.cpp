@@ -19,6 +19,7 @@ float *ReadImage(const std::string &filename, int &width, int &height,
 
     float *out; // width * height * RGBA
     const char *err = nullptr;
+    std::cout << "file path" << filename.c_str()<< std::endl;
     int ret = LoadEXR(&out, &width, &height, filename.c_str(), &err);
     float *buffer = new float[width * height * channel];
 
