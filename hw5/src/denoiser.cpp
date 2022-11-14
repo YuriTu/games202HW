@@ -85,12 +85,13 @@ void Denoiser::TemporalAccumulation(const Buffer2D<Float3> &curFilteredColor) {
     }
     std::swap(m_misc, m_accColor);
 }
-
+// fixme 问题在此
 Buffer2D<Float3> Denoiser::Filter(const FrameInfo &frameInfo) {
     int height = frameInfo.m_beauty.m_height;
     int width = frameInfo.m_beauty.m_width;
     Buffer2D<Float3> filteredImage = CreateBuffer2D<Float3>(width, height);
     int kernelRadius = 16;
+    std::cout << " filter 1" << std::endl;
 #pragma omp parallel for
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
@@ -108,21 +109,29 @@ Buffer2D<Float3> Denoiser::Filter(const FrameInfo &frameInfo) {
             int j_max_x = std::min(width, x + kernelRadius);
             int j_min_y = std::max(0, y - height);
             int j_max_y = std::min(height, y + kernelRadius);
-
             // 关系点j
             for (int j_x = j_min_x; j_x < j_max_x; j_x++) {
                 for (int j_y = j_min_y; j_y < j_max_y; j_y++) {
+                    if (j_x == x && j_y == y) {
+                        sum_of_weight += 1.0f; 
+                        sum_of_weight_value += i;
+
+                        continue;
+                    }
                     
                     Float3 j = frameInfo.m_beauty(j_x,j_y);
                     Float3 j_xy = Float3(j_x,j_y,0.0f);
                     Float3 j_normal = frameInfo.m_normal(j_x,j_y);
                     Float3 j_position = frameInfo.m_position(j_x,j_y);
-
-                    float distance = Sqr(Length(i_xy - j_xy)) / (2.0f * std::pow(m_sigmaCoord, 2.0f)) * -1.0f;
-                    float color = Sqr(Length(i - j)) /  (2.0f * std::pow(m_sigmaColor, 2.0f)) * -1.0f;
-                    float normal_ij = std::acos( Dot(Normalize(i), Normalize(j)) );
-                    float normal = std::pow(Sqr(normal_ij), 2.0f) / (2 * std::pow(m_sigmaNormal, 2.0f)) * -1.0f;
-                    float plane_ij = Dot(i_normal, Normalize(j_position - i_position) );
+                    float distance = SqrDistance(i_position, j_position) / (2.0f * std::pow(m_sigmaCoord, 2.0f)) * -1.0f;
+                    
+                    float color = SqrDistance(i,j) /  (2.0f * std::pow(m_sigmaColor, 2.0f)) * -1.0f;
+                    float normal_ij = SafeAcos( Dot(i_normal, j_normal) );
+                    float normal = Sqr(normal_ij) / (2 * std::pow(m_sigmaNormal, 2.0f)) * -1.0f;
+                    float plane_ij = 0.0f;
+                    if (distance != 0.0f) {
+                        plane_ij = Dot(i_normal, Normalize(j_position - i_position) );
+                    }
                     float plane = std::pow(plane_ij, 2.0f) / (2.0f * std::pow(m_sigmaPlane, 2.0f)) * -1.0f;
 
                     float weight = std::exp(distance + color + normal + plane);
@@ -130,11 +139,11 @@ Buffer2D<Float3> Denoiser::Filter(const FrameInfo &frameInfo) {
                     sum_of_weight_value += (j * weight);
                 }
             }
-
             // 结果
             filteredImage(x, y) = sum_of_weight_value / sum_of_weight;
         }
     }
+    std::cout << " filter 4" << std::endl;
     return filteredImage;
 }
 
@@ -151,16 +160,21 @@ void Denoiser::Maintain(const FrameInfo &frameInfo) { m_preFrameInfo = frameInfo
 Buffer2D<Float3> Denoiser::ProcessFrame(const FrameInfo &frameInfo) {
     // Filter current frame
     Buffer2D<Float3> filteredColor;
+    std::cout << "before filter" << std::endl;
     filteredColor = Filter(frameInfo);
+    std::cout << "after filter" << std::endl;
 
     // Reproject previous frame color to current
     if (m_useTemportal) {
+        std::cout << "before reporjection" << std::endl;
         Reprojection(frameInfo);
+        std::cout << "before accmulation" << std::endl;
         TemporalAccumulation(filteredColor);
     } else {
         Init(frameInfo, filteredColor);
     }
-
+    std::cout << "done temp" << std::endl;
+    
     // Maintain
     Maintain(frameInfo);
     if (!m_useTemportal) {

@@ -49,7 +49,7 @@ void Denoise(const filesystem::path &inputDir, const filesystem::path &outputDir
         FrameInfo frameInfo = LoadFrameInfo(inputDir, i);
         Buffer2D<Float3> image = denoiser.ProcessFrame(frameInfo);
         std::string filename =
-            (outputDir / ("result_" + std::to_string(i) + ".png")).str();
+            (outputDir / ("result_" + std::to_string(i) + ".exr")).str();
         WriteFloat3Image(image, filename);
     }
 }
@@ -65,7 +65,13 @@ int main() {
     filesystem::path outputDir("examples/pink-room/output");
     int frameNum = 80;
     */
+   try {
+         Denoise(inputDir, outputDir, frameNum);
+    } catch (const std::exception& e) {
+        std::cerr << e.what() << std::endl;
+        return EXIT_FAILURE;
+    }
 
-    Denoise(inputDir, outputDir, frameNum);
+   
     return 0;
 }
