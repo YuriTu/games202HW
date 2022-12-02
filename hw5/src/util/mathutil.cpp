@@ -100,6 +100,9 @@ Matrix4x4 Inverse(const Matrix4x4 &mat) {
                 mat.m[0][2] * mat.m[1][1] * mat.m[2][0];
     float det = mat.m[0][0] * inv[0][0] + mat.m[0][1] * inv[1][0] +
                 mat.m[0][2] * inv[2][0] + mat.m[0][3] * inv[3][0];
+                // std::cout << " inver det" << det << std::endl;
+                // std::cout << " inver max" << Matrix4x4(inv) << std::endl;
+
     return Matrix4x4(inv) / det;
 }
 

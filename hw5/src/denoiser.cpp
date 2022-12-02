@@ -1,4 +1,6 @@
 #include "denoiser.h"
+#include <algorithm>
+
 
 Denoiser::Denoiser() : m_useTemportal(false) {}
 
@@ -11,7 +13,8 @@ void Denoiser::Reprojection(const FrameInfo &frameInfo) {
         m_preFrameInfo.m_matrix[m_preFrameInfo.m_matrix.size() - 1];
     Matrix4x4 preWorldToCamera =
         m_preFrameInfo.m_matrix[m_preFrameInfo.m_matrix.size() - 2];
-#pragma omp parallel for
+        std::cout << " preject 1" << std::endl;
+#pragma omp parallel for 
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
             // TODO: Reproject
@@ -25,10 +28,15 @@ void Denoiser::Reprojection(const FrameInfo &frameInfo) {
             // 2. 世界坐标到物体坐标
             //对应的物体标号
             float item_id = frameInfo.m_id(x,y);
+            if (item_id == -1) {
+                continue;
+            }
             // 物体到世界
             Matrix4x4 item_matrix = frameInfo.m_matrix[item_id];
+            // fixme
+            // std::cout << " preject 1.1, id :" << item_id << std::endl;
             auto world2module = Inverse(item_matrix);
-            
+            // std::cout << " preject 2" << std::endl;
             // 上一帧
             // 3.物体到世界
             auto pre_module2world = m_preFrameInfo.m_matrix[item_id];
@@ -46,7 +54,7 @@ void Denoiser::Reprojection(const FrameInfo &frameInfo) {
             bool inScreen = 
                 pre_item_screen_position.x <0 || pre_item_screen_position.x > width ||
                 pre_item_screen_position.y <0 || pre_item_screen_position.y > height;
-            
+            // std::cout << " preject 3" << std::endl;
             // 目前像素对应的物体标号
             float pre_item_id = m_preFrameInfo.m_id(pre_item_screen_position.x, pre_item_screen_position.y);
 
@@ -55,7 +63,7 @@ void Denoiser::Reprojection(const FrameInfo &frameInfo) {
             // 2. 判断是否合法
             // 1. 对应的xy在不在屏幕
             // 2.  m_id是否能对上
-
+            // std::cout << " preject 4" << std::endl;
             if (inScreen && isSameObject) {
                 m_valid(x,y) = true;
                 // 把上一帧的投影结果 保存下来，表示使用，在当前帧后面渲染会参考使用
@@ -76,16 +84,51 @@ void Denoiser::TemporalAccumulation(const Buffer2D<Float3> &curFilteredColor) {
         for (int x = 0; x < width; x++) {
             // TODO: Temporal clamp
             // acc是上一帧的投影后参考结果
-            Float3 color = m_accColor(x, y);
+            Float3 prevFrameColor = m_accColor(x, y);
+            Float3 currentFrameColor = curFilteredColor(x, y);
             // 指数均线
             // TODO: Exponential moving average
             float alpha = 1.0f;
-            m_misc(x, y) = Lerp(color, curFilteredColor(x, y), alpha);
+            if (m_valid(x,y)) {
+                alpha = 0.25;
+                float k = 1.0f;
+                // int kernelRadius = 7;
+                int j_min_x = std::max(0, x - kernelRadius);
+                int j_max_x = std::min(width, x + kernelRadius);
+                int j_min_y = std::max(0, y - height);
+                int j_max_y = std::min(height, y + kernelRadius);
+
+                std::vector<Float3> list;
+                Float3 amount;
+                float count;
+                Float3 variance;
+
+                for (int j_x = j_min_x; j_x < j_max_x; j_x++ ) {
+                    for (int j_y = j_min_y; j_y < j_max_y; j_y++) {
+                        Float3 temp = curFilteredColor(j_x,j_y);
+                        list.push_back(temp);
+                        amount += temp;
+                        count += 1.0f;
+                    }
+                }
+                // mean
+                Float3 avg = amount / count;
+                // var
+                std::for_each(std::begin(list),std::end(list), [&](const Float3 i) {
+                    variance += ( (i - avg) * (i - avg) );
+                });
+                variance /= count;
+
+                prevFrameColor = Clamp(prevFrameColor,avg - variance * k , avg + variance * k);
+
+            };
+            // curfile 当前帧
+            m_misc(x, y) = Lerp(prevFrameColor, currentFrameColor , alpha);
         }
     }
     std::swap(m_misc, m_accColor);
 }
-// fixme 问题在此
+
 Buffer2D<Float3> Denoiser::Filter(const FrameInfo &frameInfo) {
     int height = frameInfo.m_beauty.m_height;
     int width = frameInfo.m_beauty.m_width;

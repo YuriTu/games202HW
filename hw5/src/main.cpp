@@ -56,15 +56,15 @@ void Denoise(const filesystem::path &inputDir, const filesystem::path &outputDir
 
 int main() {
     // Box E:/GAMES202/
-    filesystem::path inputDir("D:/workspace/games202HW/hw5/src/examples/box/input");
-    filesystem::path outputDir("D:/workspace/games202HW/hw5/src/examples/box/output");
-    int frameNum = 20;
-    /*
+    // filesystem::path inputDir("D:/workspace/games202HW/hw5/src/examples/box/input");
+    // filesystem::path outputDir("D:/workspace/games202HW/hw5/src/examples/box/output");
+    // int frameNum = 20;
+    
     // Pink room
-    filesystem::path inputDir("examples/pink-room/input");
-    filesystem::path outputDir("examples/pink-room/output");
+    filesystem::path inputDir("D:/workspace/games202HW/hw5/src/examples/pink-room/input");
+    filesystem::path outputDir("D:/workspace/games202HW/hw5/src/examples/pink-room/output");
     int frameNum = 80;
-    */
+    
    try {
          Denoise(inputDir, outputDir, frameNum);
     } catch (const std::exception& e) {
